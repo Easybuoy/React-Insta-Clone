@@ -50,4 +50,5 @@
 .postContainer .card .card-time p {
   font-size: 0.6rem;
   text-transform: uppercase;
+  font-weight: bold;
 }

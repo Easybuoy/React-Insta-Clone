@@ -15,5 +15,8 @@ export default function CommentSection({ commentData }) {
 }
 
 CommentSection.propTypes = {
-  commentData: PropTypes.object.isRequired
+  commentData: PropTypes.shape({
+    username: PropTypes.string.isRequired,
+    text: PropTypes.string.isRequired
+  }).isRequired
 };

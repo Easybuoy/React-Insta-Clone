@@ -8,9 +8,17 @@ import NewComment from "../CommentSection/NewComment";
 import "./PostContainer.css";
 
 export default function PostContainer({ data }) {
-  console.log(data.timestamp);
-  console.log(Date.parse(data.timestamp))
-  console.log(moment('LLL'))
+  const convertTime = time => {
+    let newTimeArr = time.split(" ");
+    newTimeArr[1] = newTimeArr[1].slice(0, -2);
+    newTimeArr = newTimeArr.join(" ");
+    let newTime = Date.parse(newTimeArr);
+
+    return moment(newTime)
+      .startOf("day")
+      .fromNow();
+  };
+
   return (
     <div className="postContainer">
       <div className="card">
@@ -31,7 +39,7 @@ export default function PostContainer({ data }) {
           return <CommentSection key={comment.text} commentData={comment} />;
         })}
         <div className="card-time">
-          <p>23 hrs ago</p>
+          <p>{convertTime(data.timestamp)}</p>
         </div>
         <NewComment />
       </div>
@@ -40,5 +48,12 @@ export default function PostContainer({ data }) {
 }
 
 PostContainer.propTypes = {
-  data: PropTypes.object.isRequired
+  data: PropTypes.shape({
+    username: PropTypes.string.isRequired,
+    imageUrl: PropTypes.string.isRequired,
+    likes: PropTypes.number.isRequired,
+    thumbnailUrl: PropTypes.string.isRequired,
+    comments: PropTypes.array.isRequired,
+    timestamp: PropTypes.string.isRequired
+  }).isRequired
 };
