@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import moment from "moment";
 import PropTypes from "prop-types";
 
@@ -8,6 +8,20 @@ import NewComment from "../CommentSection/NewComment";
 import "./PostContainer.css";
 
 export default function PostContainer({ data }) {
+  const [comment, setComment] = useState({});
+  const [commentArr, setCommentArr] = useState(data.comments);
+
+  const handleClick = e => {
+    if (e.key === "Enter") {
+      let newComment = {
+        username: "annonymous",
+        text: e.target.value
+      };
+      setComment(newComment);
+      let newCommentArr = commentArr.concat(newComment);
+      setCommentArr(newCommentArr);
+    }
+  };
   const convertTime = time => {
     let newTimeArr = time.split(" ");
     newTimeArr[1] = newTimeArr[1].slice(0, -2);
@@ -35,13 +49,13 @@ export default function PostContainer({ data }) {
           <i className="far fa-comment fa-2x" />
           <p>{data.likes} likes</p>
         </div>
-        {data.comments.map(comment => {
+        {commentArr.map(comment => {
           return <CommentSection key={comment.text} commentData={comment} />;
         })}
         <div className="card-time">
           <p>{convertTime(data.timestamp)}</p>
         </div>
-        <NewComment />
+        <NewComment handleClick={handleClick} value={comment} />
       </div>
     </div>
   );
