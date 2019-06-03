@@ -11,14 +11,14 @@ export default function SearchBar() {
       </div>
 
       <div className="searchInput">
-        <i class="fas fa-search" />
+        <i className="fas fa-search" />
         <input placeholder="Search" />
       </div>
 
       <div className="searchContent">
-        <i class="far fa-compass fa-2x" />
-        <i class="far fa-heart fa-2x" />
-        <i class="far fa-user fa-2x" />
+        <i className="far fa-compass fa-2x" />
+        <i className="far fa-heart fa-2x" />
+        <i className="far fa-user fa-2x" />
       </div>
     </div>
   );
