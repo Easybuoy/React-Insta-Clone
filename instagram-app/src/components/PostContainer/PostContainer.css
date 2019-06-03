@@ -39,6 +39,7 @@
 .postContainer .card .card-footer p {
   padding-left: 1rem;
   font-weight: bold;
+  margin: 0.5rem 0;
 }
 
 .postContainer .card .card-time {
