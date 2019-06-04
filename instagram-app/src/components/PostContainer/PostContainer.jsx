@@ -7,7 +7,25 @@ import NewComment from "../CommentSection/NewComment";
 
 import "./PostContainer.css";
 
-export default function PostContainer({ data }) {
+export default function PostContainer({ data, index, handleLike, setPostsData }) {
+  let like = (
+    <i
+      className="far fa-heart fa-2x"
+      onClick={() => {
+        handleLike(index);
+      }}
+    />
+  );
+  if (data.isLiked === true) {
+    like = (
+      <i
+        className="fas fa-heart fa-2x"
+        onClick={() => {
+          handleLike(index);
+        }}
+      />
+    );
+  }
   const [comment, setComment] = useState({});
   const [commentArr, setCommentArr] = useState(data.comments);
 
@@ -22,6 +40,7 @@ export default function PostContainer({ data }) {
       setCommentArr(newCommentArr);
     }
   };
+  
   const convertTime = time => {
     let newTimeArr = time.split(" ");
     newTimeArr[1] = newTimeArr[1].slice(0, -2);
@@ -45,7 +64,7 @@ export default function PostContainer({ data }) {
         </div>
 
         <div className="card-footer">
-          <i className="far fa-heart fa-2x" />
+          {like}
           <i className="far fa-comment fa-2x" />
           <p>{data.likes} likes</p>
         </div>
@@ -55,7 +74,7 @@ export default function PostContainer({ data }) {
         <div className="card-time">
           <p>{convertTime(data.timestamp)}</p>
         </div>
-        <NewComment handleClick={handleClick} value={comment} />
+        <NewComment handleClick={handleClick}  />
       </div>
     </div>
   );
