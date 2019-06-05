@@ -10,7 +10,8 @@ export default class PostsPage extends Component {
   constructor() {
     super();
     this.state = {
-      data: []
+      data: [],
+      loading: false
     };
   }
 
@@ -23,10 +24,12 @@ export default class PostsPage extends Component {
   };
 
   componentDidMount() {
+    // setTimeout(() => {
     if (localStorage.getItem("posts") === null) {
       localStorage.setItem("posts", JSON.stringify(dummyData));
     }
-    this.setState({ data: this.getPostsData() });
+    this.setState({ data: this.getPostsData(), loading: false });
+    // }, 1000);
   }
 
   handleLike = index => {
@@ -49,7 +52,7 @@ export default class PostsPage extends Component {
   handleClick = (e, index) => {
     if (e.key === "Enter") {
       let newComment = {
-        username: localStorage.getItem('token') || 'anonymous',
+        username: localStorage.getItem("token") || "anonymous",
         text: e.target.value
       };
       let { data } = this.state;
@@ -60,25 +63,33 @@ export default class PostsPage extends Component {
   };
 
   handleSearch = e => {
-    this.setState({ data: this.getPostsData() });
+    this.setState({ data: this.getPostsData(), loading: true });
     let searchData = e.target.value;
 
-    if (searchData.length > 0) {
-      let newData = this.state.data.filter(post => {
-        if (post.username.includes(e.target.value)) {
-          return post;
-        }
-        return null;
-      });
-      this.setState({ data: newData });
-    }
+    setTimeout(() => {
+      if (searchData.length > 0) {
+        let newData = this.state.data.filter(post => {
+          if (post.username.includes(searchData)) {
+            return post;
+          }
+          return null;
+        });
+        this.setState({ data: newData, loading: false });
+      }
+      this.setState({ loading: false });
+    }, 100);
   };
 
   render() {
+    let data = (
+      <div className="preloader">
+        <Triple color="#a7a9ac" size={80} />
+      </div>
+    );
+
     if (this.state.data.length > 0) {
-      return (
+      data = (
         <div className="App">
-          <SearchBar handleSearch={this.handleSearch} />
           {this.state.data.map((data, i) => {
             return (
               <PostContainer
@@ -94,12 +105,28 @@ export default class PostsPage extends Component {
         </div>
       );
     }
-    return (
-      <>
-        {/* <SearchBar handleSearch={this.handleSearch} /> */}
+
+    if (this.state.data.length === 0) {
+      data = (
+        <div className="preloader">
+          <p>No Post Found</p>
+        </div>
+      );
+    }
+
+    if (this.state.loading) {
+
+      data = (
         <div className="preloader">
           <Triple color="#a7a9ac" size={80} />
         </div>
+      );
+    }
+
+    return (
+      <>
+        <SearchBar handleSearch={this.handleSearch} />
+        {data}
       </>
     );
   }

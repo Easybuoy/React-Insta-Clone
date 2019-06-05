@@ -45,6 +45,7 @@
   border: none;
   color: #a7a9ac;
   outline: none;
+  background-color: inherit;
 }
 
 .searchContent i {
