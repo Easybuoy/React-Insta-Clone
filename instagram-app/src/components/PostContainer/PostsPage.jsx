@@ -49,7 +49,7 @@ export default class PostsPage extends Component {
   handleClick = (e, index) => {
     if (e.key === "Enter") {
       let newComment = {
-        username: "annonymous",
+        username: localStorage.getItem('token') || 'anonymous',
         text: e.target.value
       };
       let { data } = this.state;
