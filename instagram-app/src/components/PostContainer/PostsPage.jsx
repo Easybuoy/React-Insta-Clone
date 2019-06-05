@@ -74,7 +74,7 @@ export default class PostsPage extends Component {
     }
   };
 
-  render() { console.log(this.state.data)
+  render() {
     if (this.state.data.length > 0) {
       return (
         <div className="App">
