@@ -1,4 +1,6 @@
 import React from "react";
+import PropTypes from "prop-types";
+
 import "./SearchBar.css";
 
 export default function SearchBar({ handleSearch }) {
@@ -23,3 +25,7 @@ export default function SearchBar({ handleSearch }) {
     </div>
   );
 }
+
+SearchBar.propTypes = {
+  handleSearch: PropTypes.func.isRequired
+};

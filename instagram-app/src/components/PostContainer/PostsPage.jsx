@@ -24,12 +24,10 @@ export default class PostsPage extends Component {
   };
 
   componentDidMount() {
-    // setTimeout(() => {
     if (localStorage.getItem("posts") === null) {
       localStorage.setItem("posts", JSON.stringify(dummyData));
     }
     this.setState({ data: this.getPostsData(), loading: false });
-    // }, 1000);
   }
 
   handleLike = index => {
