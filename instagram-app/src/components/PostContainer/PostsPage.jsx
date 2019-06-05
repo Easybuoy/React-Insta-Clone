@@ -115,7 +115,6 @@ export default class PostsPage extends Component {
     }
 
     if (this.state.loading) {
-
       data = (
         <div className="preloader">
           <Triple color="#a7a9ac" size={80} />
