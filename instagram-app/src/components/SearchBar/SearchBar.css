@@ -17,7 +17,7 @@
 
 .logo p {
   padding: 0 1rem;
-  font-family: 'Rochester', cursive;
+  font-family: "Rochester", cursive;
   font-weight: bolder;
   font-size: 1.5rem;
 }
@@ -45,6 +45,7 @@
   border: none;
   color: #a7a9ac;
   outline: none;
+  background-color: inherit;
 }
 
 .searchContent i {
@@ -52,4 +53,28 @@
   color: #a7a9ac;
   border: none;
   margin-top: 2rem;
+  cursor: pointer;
+}
+
+@media (max-width: 500px) {
+  .searchContent {
+    display: none;
+  }
+  .searchInput i {
+    display: none;
+  }
+  .searchInput {
+    margin-top: 0.5rem;
+  }
+  .searchInput input {
+    text-align: center;
+  }
+
+  .logo p {
+    display: none;
+  }
+
+  .logo hr {
+    display: none;
+  }
 }
