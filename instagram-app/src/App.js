@@ -8,6 +8,8 @@ const ComponentFromWithAuthenticate = withAuthenticate(PostsPage)(Login);
 
 export default class App extends Component {
   render() {
-    return <ComponentFromWithAuthenticate component={PostsPage} />;
+    return (
+      <ComponentFromWithAuthenticate exact path="/" component={PostsPage} />
+    );
   }
 }
