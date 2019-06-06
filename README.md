@@ -1,5 +1,8 @@
 # React-Insta-Clone
 
+## App Details
+Click <a href="https://r-insta-clone.netlify.com/">here</a> to view app.
+
 ## Introduction
 
 - The purpose of this project is to continue building on your knowledge of React that you have gained thus far.
