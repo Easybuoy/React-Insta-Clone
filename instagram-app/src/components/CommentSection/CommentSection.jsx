@@ -1,16 +1,17 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import "./CommentSection.css";
+// import "./CommentSection.css";
+import StyledCommentSection from "./StyledCommentSection";
 
 export default function CommentSection({ commentData }) {
   return (
-    <div className="commentSection">
+    <StyledCommentSection>
       <p className="commentUsername">
         <b>{commentData.username}</b>
         {commentData.text}
       </p>
-    </div>
+    </StyledCommentSection>
   );
 }
 

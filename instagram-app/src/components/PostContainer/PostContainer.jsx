@@ -5,13 +5,13 @@ import PropTypes from "prop-types";
 import CommentSection from "../CommentSection/CommentSection";
 import NewComment from "../CommentSection/NewComment";
 
-import "./PostContainer.css";
+import StyledPostContainer from "./StyledPostContainer";
 
 export default function PostContainer({
   data,
   index,
   handleLike,
-  handleClick,
+  handleClick
 }) {
   let like = (
     <i
@@ -44,7 +44,7 @@ export default function PostContainer({
   };
 
   return (
-    <div className="postContainer">
+    <StyledPostContainer>
       <div className="card">
         <div className="card-user-detail">
           <img src={data.thumbnailUrl} alt={data.username} />
@@ -67,7 +67,7 @@ export default function PostContainer({
         </div>
         <NewComment handleClick={handleClick} index={index} />
       </div>
-    </div>
+    </StyledPostContainer>
   );
 }
 

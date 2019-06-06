@@ -87,7 +87,7 @@ export default class PostsPage extends Component {
 
     if (this.state.data.length > 0) {
       data = (
-        <div className="App">
+        <div>
           {this.state.data.map((data, i) => {
             return (
               <PostContainer

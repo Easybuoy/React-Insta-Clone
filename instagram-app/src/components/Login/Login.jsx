@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import "./Login.css";
+import StyledLogin from "./StyledLogin";
 
 import appStoreImg from "../../assets/astore.png";
 import googlePlayStoreImg from "../../assets/gplay.png";
@@ -20,7 +20,7 @@ export default function Login() {
   };
 
   return (
-    <>
+    <StyledLogin>
       <div className="login">
         <h2>Instagram</h2>
         <div className="login-form">
@@ -60,6 +60,6 @@ export default function Login() {
           <img src={googlePlayStoreImg} alt="Google PlayStore Store" />
         </a>
       </div>
-    </>
+    </StyledLogin>
   );
 }

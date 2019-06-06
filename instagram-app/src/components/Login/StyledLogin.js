@@ -1,4 +1,7 @@
-.login {
+import styled from 'styled-components';
+
+const StyledLogin = styled.div`
+   .login {
   display: flex;
   flex-direction: column;
   width: 25%;
@@ -131,3 +134,6 @@
     width: 70%;
   }
 }
+`;
+
+export default StyledLogin;
