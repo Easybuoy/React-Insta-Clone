@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import moment from "moment";
 import PropTypes from "prop-types";
 
@@ -7,21 +7,31 @@ import NewComment from "../CommentSection/NewComment";
 
 import "./PostContainer.css";
 
-export default function PostContainer({ data }) {
-  const [comment, setComment] = useState({});
-  const [commentArr, setCommentArr] = useState(data.comments);
+export default function PostContainer({
+  data,
+  index,
+  handleLike,
+  handleClick,
+}) {
+  let like = (
+    <i
+      className="far fa-heart fa-2x"
+      onClick={() => {
+        handleLike(index);
+      }}
+    />
+  );
+  if (data.isLiked === true) {
+    like = (
+      <i
+        className="fas fa-heart fa-2x"
+        onClick={() => {
+          handleLike(index);
+        }}
+      />
+    );
+  }
 
-  const handleClick = e => {
-    if (e.key === "Enter") {
-      let newComment = {
-        username: "annonymous",
-        text: e.target.value
-      };
-      setComment(newComment);
-      let newCommentArr = commentArr.concat(newComment);
-      setCommentArr(newCommentArr);
-    }
-  };
   const convertTime = time => {
     let newTimeArr = time.split(" ");
     newTimeArr[1] = newTimeArr[1].slice(0, -2);
@@ -45,17 +55,17 @@ export default function PostContainer({ data }) {
         </div>
 
         <div className="card-footer">
-          <i className="far fa-heart fa-2x" />
+          {like}
           <i className="far fa-comment fa-2x" />
           <p>{data.likes} likes</p>
         </div>
-        {commentArr.map(comment => {
+        {data.comments.map(comment => {
           return <CommentSection key={comment.text} commentData={comment} />;
         })}
         <div className="card-time">
           <p>{convertTime(data.timestamp)}</p>
         </div>
-        <NewComment handleClick={handleClick} value={comment} />
+        <NewComment handleClick={handleClick} index={index} />
       </div>
     </div>
   );

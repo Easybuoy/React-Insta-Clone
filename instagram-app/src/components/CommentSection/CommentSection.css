@@ -1,5 +1,6 @@
 .commentSection {
   display: flex;
+  flex-wrap: wrap;
   margin: 0.2rem 0;
 }
 
@@ -14,8 +15,12 @@
   padding-right: 0.5rem;
 }
 
+.commentUsername {
+  width: 100%;
+}
 .newComment {
   display: flex;
+  /* width: 100%; */
   justify-content: space-between;
   padding: 1rem 1rem;
 }
