@@ -1,11 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import "./SearchBar.css";
+import StyledSearchBar from "./StyledSearchBar";
 
 export default function SearchBar({ handleSearch }) {
   return (
-    <div className="searchBar">
+    <StyledSearchBar>
       <div className="logo">
         <i className="fab fa-instagram fa-3x" />
         <hr />
@@ -22,7 +22,7 @@ export default function SearchBar({ handleSearch }) {
         <i className="far fa-heart fa-2x" />
         <i className="far fa-user fa-2x" />
       </div>
-    </div>
+    </StyledSearchBar>
   );
 }
 

@@ -18,7 +18,7 @@ export const withAuthenticate = PostsPage => Login => {
       if (this.state.loggedIn === true) {
         return <PostsPage {...this.props} />;
       } else {
-        return <Login {...this.props} />;
+        return <Login />;
       }
     }
   };

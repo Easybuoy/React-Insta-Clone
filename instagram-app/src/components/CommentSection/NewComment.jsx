@@ -1,9 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+import StyledNewComment from "./StyledNewComment";
+
 export default function NewComment({ handleClick, index }) {
   return (
-    <div className="newComment">
+    <StyledNewComment>
       <input
         placeholder="Add a comment..."
         onKeyUp={e => {
@@ -11,7 +13,7 @@ export default function NewComment({ handleClick, index }) {
         }}
       />
       <i className="fas fa-ellipsis-h" />
-    </div>
+    </StyledNewComment>
   );
 }
 

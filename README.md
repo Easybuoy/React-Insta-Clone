@@ -1,4 +1,9 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/8793196b-8604-4142-9f11-f44cf5aebf47/deploy-status)](https://app.netlify.com/sites/r-insta-clone/deploys)
+
 # React-Insta-Clone
+
+## App Details
+Click <a href="https://r-insta-clone.netlify.com/">here</a> to view app.
 
 ## Introduction
 
